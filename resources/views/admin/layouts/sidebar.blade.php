@@ -15,17 +15,21 @@
                     <a href="{{ route('banner-management.index') }}">
                         <i class="fas fa-copy"></i>Banner Management</a>
                 </li> 
+                <li class="{{ request()->routeIs('promo-management.index') ? 'active' : '' }}">
+                    <a href="{{ route('promo-management.index') }}">
+                        <i class="fas fa-copy"></i>Promo Management</a>
+                </li> 
                 <li  class="{{ request()->routeIs('category-management.index') ? 'active' : '' }}">
                     <a href="{{ route('category-management.index') }}">
-                        <i class="fa fa-tasks"></i>Category</a>
+                        <i class="fa fa-tasks"></i>Category Management</a>
                 </li>
                 <li class="{{ request()->routeIs('sub-category.index') ? 'active' : '' }}">
                     <a href="{{ route('sub-category.index') }}">
-                        <i class="fa fa-tasks"></i>Sub Category</a>
+                        <i class="fa fa-tasks"></i>SubCategory</a>
                 </li>
                 <li class="{{ request()->routeIs('coupon-management.index') ? 'active' : '' }}">
                     <a href="{{ route('coupon-management.index') }}">
-                        <i class="fa fa-tags" ></i>Coupon</a>
+                        <i class="fa fa-tags" ></i>Coupon Management</a>
                 </li>
                 <li class="{{ request()->routeIs('product-management.index') ? 'active' : '' }}">
                     <a href="{{ route('product-management.index') }}">

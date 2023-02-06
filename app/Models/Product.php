@@ -24,6 +24,16 @@ class Product extends Model
         'choice'
     ];
 
+        public function subCategory()
+        {
+            return $this->belongsTo(SubCategory::class);
+        }
+
+        public function productAttribute()
+        {
+            return $this->hasMany(Attribute::class);
+        }
+
         public function imageAttribute()
         {
             return $this->hasMany(MultipleImages::class);

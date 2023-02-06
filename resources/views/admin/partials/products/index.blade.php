@@ -522,8 +522,7 @@
                         $('.sub_category_id').prop('disabled', false);
                         $('.summernotetwo').summernote('code', response.description);
                         $('#previous_image').html(
-                            '<img src="{{ asset('admin/images/products/') }}' + '/' +
-                            response.image + '" width="80" height="80">');
+                            '<img src="{{ asset('admin/images/products/') }}' + '/' + response.image + '" width="80" height="80">');
                         $('#location').html('<a href="'+attrurl+'" class="btn btn-sm btn-success float-right mr-3 mt-3"><i class="fa fa-plus-circle"></i></a>')
 
                     }

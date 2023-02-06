@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\admin\AttributeController;
-use App\Http\Controllers\admin\AuthController;
-use App\Http\Controllers\admin\BannerController;
-use App\Http\Controllers\admin\CategoryController;
-use App\Http\Controllers\admin\CouponController;
-use App\Http\Controllers\admin\ProductController;
-use App\Http\Controllers\admin\SubCatController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\AuthController;
+use App\Http\Controllers\admin\PromoController;
+use App\Http\Controllers\admin\BannerController;
+use App\Http\Controllers\admin\CouponController;
+use App\Http\Controllers\admin\SubCatController;
+use App\Http\Controllers\admin\ProductController;
+use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\AttributeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +24,35 @@ use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
 //     return view('admin.master.master');
-// });
+// }
+Route::get('/',[HomeController::class,'home'])->name('home');
+Route::get('/quick-view/{slug}',[HomeController::class,'quickView'])->name('quickView');
+
+Route::group(['middleware' => 'customer'],function(){
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ..........................................Admin........................................................................
+
 Route::get('/admin-login',[AuthController::class,'login'])->name('login');
 Route::post('/admin-login-confirm',[AuthController::class,'login_confirm'])->name('login_confirm');
 Route::group(['prefix' => 'app', 'middleware' => 'admin'], function () {
@@ -54,5 +84,8 @@ Route::group(['prefix' => 'app', 'middleware' => 'admin'], function () {
 // Banner
     Route::resource('/banner-management', BannerController::class);
     Route::post('/banner-status', [BannerController::class, 'status'])->name('banner-status');
+// Promo
+Route::resource('/promo-management', PromoController::class);
+Route::post('/promo-status', [PromoController::class, 'status'])->name('promo-status');
 
 });
