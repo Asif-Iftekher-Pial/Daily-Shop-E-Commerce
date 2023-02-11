@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\ProductController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\admin\CategoryController;
 use App\Http\Controllers\admin\AttributeController;
+use App\Http\Controllers\frontend\FrontProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +28,11 @@ use App\Http\Controllers\admin\AttributeController;
 // }
 Route::get('/',[HomeController::class,'home'])->name('home');
 Route::get('/quick-view/{slug}',[HomeController::class,'quickView'])->name('quickView');
-
+Route::get('/view-product-detail/{slug}',[FrontProductController::class,'viewProductDetail'])->name('viewProductDetail');
+Route::get('/auto-search',[HomeController::class,'autoSearch'])->name('autoSearch');
+Route::post('/auto-search-submit',[HomeController::class,'searchSubmit'])->name('searchSubmit');
+Route::get('/product-by-category/category={slug}',[FrontProductController::class,'categorizedProduct'])->name('categorizedProduct');
+Route::get('/products',[FrontProductController::class,'viewProducts'])->name('viewProducts');
 Route::group(['middleware' => 'customer'],function(){
 
 });

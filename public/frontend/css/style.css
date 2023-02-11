@@ -4184,3 +4184,10 @@ img {
   }
 }
 
+.hot{
+  background-color: #FF0000;
+}
+
+.sale{
+  background-color: rgb(44, 157, 244);
+}

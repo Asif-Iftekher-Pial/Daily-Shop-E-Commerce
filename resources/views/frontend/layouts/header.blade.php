@@ -128,9 +128,10 @@
                         <!-- / cart box -->
                         <!-- search box -->
                         <div class="aa-search-box">
-                            <form action="">
-                                <input type="text" name="" id=""
-                                    placeholder="Search here ex. 'man' ">
+                            <form action="{{ route('searchSubmit') }}" method="post">
+                                @csrf
+                                <input type="text" name="query" id="searchProduct"
+                                    placeholder="Search product...">
                                 <button type="submit"><span class="fa fa-search"></span></button>
                             </form>
                         </div>

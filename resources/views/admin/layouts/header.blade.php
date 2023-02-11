@@ -8,6 +8,7 @@
                         <i class="zmdi zmdi-search"></i>
                     </button>
                 </form>
+                <a href="{{ route('home') }}"  class="btn btn-outline-primary" target="_blank">My Website</a>
                 <div class="header-button">
                     <div class="noti-wrap">
                         <div class="noti__item js-item-menu">

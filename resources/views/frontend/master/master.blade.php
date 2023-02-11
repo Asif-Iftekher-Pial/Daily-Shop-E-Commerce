@@ -2,7 +2,7 @@
 <html lang="en">
 @include('frontend.layouts.head')
 
-<body>
+<body class="productPage">
     <!-- wpf loader Two -->
     {{-- <div id="wpf-loader-two">
         <div class="wpf-loader-two-inner">
@@ -39,7 +39,7 @@
                         <ul class="nav navbar-nav">
                             <li><a href="{{ route('home') }}">Home</a></li>
                             @foreach ( $dataCat as  $category)
-                            <li><a href="#">{{ $category->cat_name }} @if (count($category->subCats) > 0)<span class="caret"></span> @endif </a>
+                            <li><a href="{{ route('categorizedProduct',$category->cat_name_slug) }}">{{ $category->cat_name }} @if (count($category->subCats) > 0)<span class="caret"></span> @endif </a>
                                 @if (count($category->subCats) > 0)
                                 <ul class="dropdown-menu">
                                     @foreach ( $category->subCats as $subCat)
@@ -203,6 +203,26 @@
 
 
     @include('frontend.layouts.script')
+    <script>
+        $(document).ready(function () {
+            var path = "{{ route('autoSearch') }}";
+            $('#searchProduct').autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: path,
+                        dataType: "JSON",
+                        data: {
+                            term: request.term
+                        },
+                        success: function(data) {
+                            response(data);
+                        }
+                    });
+                },
+                minLength: 1,
+            });
+        });
+    </script>
 </body>
 
 </html>

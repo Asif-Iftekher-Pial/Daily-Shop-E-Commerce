@@ -119,14 +119,14 @@
                                                 <!-- start single product item -->
                                                 <li>
                                                     <figure>
-                                                        <a class="aa-product-img" href="#"><img
+                                                        <a class="aa-product-img" href="{{ route('viewProductDetail',$item->slug) }}"><img
                                                                 src="{{ asset('admin/images/products/' . $item->image) }}"
                                                                 alt="polo shirt img"></a>
                                                         <a class="aa-add-card-btn" href="#"><span
                                                                 class="fa fa-shopping-cart"></span>Add To Cart</a>
                                                         <figcaption>
                                                             <h4 class="aa-product-title"><a
-                                                                    href="#">{{ $item->title }}</a></h4>
+                                                                    href="{{ route('viewProductDetail',$item->slug) }}">{{ $item->title }}</a></h4>
                                                             <span
                                                                 class="aa-product-price">${{ $item->offer_price }}</span><span
                                                                 class="aa-product-price"><del>${{ $item->price }}</del></span>
@@ -164,14 +164,14 @@
                                                 <!-- start single product item -->
                                                 <li>
                                                     <figure>
-                                                        <a class="aa-product-img" href="#"><img
+                                                        <a class="aa-product-img" href="{{ route('viewProductDetail',$item->slug) }}"><img
                                                                 src="{{ asset('admin/images/products/' . $item->image) }}"
                                                                 alt="polo shirt img"></a>
                                                         <a class="aa-add-card-btn" href="#"><span
                                                                 class="fa fa-shopping-cart"></span>Add To Cart</a>
                                                         <figcaption>
                                                             <h4 class="aa-product-title"><a
-                                                                    href="#">{{ $item->title }}</a></h4>
+                                                                    href="{{ route('viewProductDetail',$item->slug) }}">{{ $item->title }}</a></h4>
                                                             <span
                                                                 class="aa-product-price">${{ $item->offer_price }}</span><span
                                                                 class="aa-product-price"><del>${{ $item->price }}</del></span>
@@ -184,8 +184,8 @@
                                                         <a href="#" data-toggle="tooltip" data-placement="top"
                                                             title="" data-original-title="Compare"><span
                                                                 class="fa fa-exchange"></span></a>
-                                                        <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                            title="" data-toggle="modal"
+                                                        <a href="{{ $item->slug }}" data-toggle2="tooltip" data-placement="top"
+                                                            title="" data-toggle="modal" class="quickView"
                                                             data-target="#quick-view-modal"
                                                             data-original-title="Quick View"><span
                                                                 class="fa fa-search"></span></a>
@@ -208,14 +208,14 @@
                                                 <!-- start single product item -->
                                                 <li>
                                                     <figure>
-                                                        <a class="aa-product-img" href="#"><img
+                                                        <a class="aa-product-img" href="{{ route('viewProductDetail',$item->slug) }}"><img
                                                                 src="{{ asset('admin/images/products/' . $item->image) }}"
                                                                 alt="polo shirt img"></a>
                                                         <a class="aa-add-card-btn" href="#"><span
                                                                 class="fa fa-shopping-cart"></span>Add To Cart</a>
                                                         <figcaption>
                                                             <h4 class="aa-product-title"><a
-                                                                    href="#">{{ $item->title }}</a></h4>
+                                                                    href="{{ route('viewProductDetail',$item->slug) }}">{{ $item->title }}</a></h4>
                                                             <span
                                                                 class="aa-product-price">${{ $item->offer_price }}</span><span
                                                                 class="aa-product-price"><del>${{ $item->price }}</del></span>
@@ -228,8 +228,8 @@
                                                         <a href="#" data-toggle="tooltip" data-placement="top"
                                                             title="" data-original-title="Compare"><span
                                                                 class="fa fa-exchange"></span></a>
-                                                        <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                            title="" data-toggle="modal"
+                                                        <a href="{{ $item->slug }}" data-toggle2="tooltip" data-placement="top"
+                                                            title="" data-toggle="modal" class="quickView"
                                                             data-target="#quick-view-modal"
                                                             data-original-title="Quick View"><span
                                                                 class="fa fa-search"></span></a>
@@ -257,14 +257,14 @@
                                                     <!-- start single product item -->
                                                     <li>
                                                         <figure>
-                                                            <a class="aa-product-img" href="#"><img
+                                                            <a class="aa-product-img" href="{{ route('viewProductDetail',$item->slug) }}"><img
                                                                     src="{{ asset('admin/images/products/' . $item->image) }}"
                                                                     alt="polo shirt img"></a>
                                                             <a class="aa-add-card-btn" href="#"><span
                                                                     class="fa fa-shopping-cart"></span>Add To Cart</a>
                                                             <figcaption>
                                                                 <h4 class="aa-product-title"><a
-                                                                        href="#">{{ $item->title }}</a></h4>
+                                                                        href="{{ route('viewProductDetail',$item->slug) }}">{{ $item->title }}</a></h4>
                                                                 <span
                                                                     class="aa-product-price">${{ $item->offer_price }}</span><span
                                                                     class="aa-product-price"><del>${{ $item->price }}</del></span>
@@ -277,8 +277,8 @@
                                                             <a href="#" data-toggle="tooltip" data-placement="top"
                                                                 title="" data-original-title="Compare"><span
                                                                     class="fa fa-exchange"></span></a>
-                                                            <a href="#" data-toggle2="tooltip" data-placement="top"
-                                                                title="" data-toggle="modal"
+                                                            <a href="{{ $item->slug }}" data-toggle2="tooltip" data-placement="top"
+                                                                title="" data-toggle="modal" class="quickView"
                                                                 data-target="#quick-view-modal"
                                                                 data-original-title="Quick View"><span
                                                                     class="fa fa-search"></span></a>
@@ -792,48 +792,5 @@
 
 
 @push('front_script')
-    <script>
-        $(document).ready(function() {
-            $(document).on('click', '.quickView', function(e) {
-                e.preventDefault();
-                var slug = $(this).attr('href');
-                // alert(slug);
-                var url = "{{ route('quickView', ':slug') }}"
-                url = url.replace(':slug', slug);
-                // alert(url);
-                $.ajax({
-                    type: "get",
-                    url: url,
-                    success: function(response) {
-                        // console.log(response);
-                        $('#title').html(response.product.title)
-                        $('#price').html('$' + response.product.offer_price)
-                        $('#summary').html(response.product.summary)
-                        if (response.productAttribute.length === 0) {
-                            $('#size').html('<p>No Size Available </p>');
-                        } else {
-                            var sizeLinks = '';
-                            $.each(response.productAttribute, function(index, attribute) {
-                                sizeLinks += '<a href="#">' + attribute.attribute_size
-                                    .toUpperCase() + '</a>';
-                            });
-                            $('#size').html(sizeLinks);
-                        }
-                        $('#catName').html(response.subCategory.sub_cat_name)
-
-                        // var loadingImage = "{{ asset('admin/images/products/') }}/" + response.product.image;
-                        var imagePath = "{{ asset('admin/images/products/') }}/" + response
-                            .product.image;
-                        $('.simpleLens-big-image').attr('src', imagePath);
-                        $('.simpleLens-lens-image').attr('data-lens-image', imagePath);
-
-                        $('#demo .simpleLens-big-image').simpleLens({
-                            loading_image: imagePath
-                        });
-                    }
-                });
-
-            });
-        });
-    </script>
+    
 @endpush
