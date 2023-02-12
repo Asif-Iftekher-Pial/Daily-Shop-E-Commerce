@@ -38,8 +38,9 @@
                         <!-- Left nav -->
                         <ul class="nav navbar-nav">
                             <li><a href="{{ route('home') }}">Home</a></li>
+                            <li><a href="{{ route('viewProducts') }}">Shop</a></li>
                             @foreach ( $dataCat as  $category)
-                            <li><a href="{{ route('categorizedProduct',$category->cat_name_slug) }}">{{ $category->cat_name }} @if (count($category->subCats) > 0)<span class="caret"></span> @endif </a>
+                            <li><a href="#">{{ $category->cat_name }} @if (count($category->subCats) > 0)<span class="caret"></span> @endif </a>
                                 @if (count($category->subCats) > 0)
                                 <ul class="dropdown-menu">
                                     @foreach ( $category->subCats as $subCat)

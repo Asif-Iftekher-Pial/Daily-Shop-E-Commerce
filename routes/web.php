@@ -31,8 +31,8 @@ Route::get('/quick-view/{slug}',[HomeController::class,'quickView'])->name('quic
 Route::get('/view-product-detail/{slug}',[FrontProductController::class,'viewProductDetail'])->name('viewProductDetail');
 Route::get('/auto-search',[HomeController::class,'autoSearch'])->name('autoSearch');
 Route::post('/auto-search-submit',[HomeController::class,'searchSubmit'])->name('searchSubmit');
-Route::get('/product-by-category/category={slug}',[FrontProductController::class,'categorizedProduct'])->name('categorizedProduct');
 Route::get('/products',[FrontProductController::class,'viewProducts'])->name('viewProducts');
+Route::post('/products-filter',[FrontProductController::class,'productFilter'])->name('productFilter');
 Route::group(['middleware' => 'customer'],function(){
 
 });
