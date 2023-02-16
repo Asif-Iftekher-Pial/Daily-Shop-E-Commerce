@@ -31,6 +31,16 @@ class FrontProductController extends Controller
             $products = $products->whereIn('category_id', $cat_id)->where(['status' => 'active'])->paginate(10);
             // dd($products);
         }
+        if(!empty($_GET['min_price']) && !empty($_GET['max_price'])){
+            $min_price = (int) $_GET['min_price'];
+            $max_price = (int) $_GET['max_price'];
+            $products = $products->whereBetween('offer_price', [$min_price, $max_price]);
+
+            
+        }
+
+
+        // sort
         if (!empty($_GET['sortBy'])) {
             if ($_GET['sortBy'] == 'Name') {
                 $products = $products->sortBy('title');
@@ -70,13 +80,28 @@ class FrontProductController extends Controller
             }
         }
 
+        
+
+
+        // price range url
+        $min_price_range = '';
+        $max_price_range = '';
+        if (!empty($data['price_range_min'])) {
+            $min_price_range .= '&min_price=' . $data['price_range_min'];
+        }
+        if (!empty($data['price_range_max'])) {
+            $max_price_range .= '&max_price=' . $data['price_range_max'];
+        }
+
         //  sort
 
         $sortUrl = '';
         if (!empty($data['sortBy'])) {
             $sortUrl .= '&sortBy=' . $data['sortBy'];
         }
-        return \redirect()->route('viewProducts', $catUrl . $sortUrl);
+        // dd($min_price_range);
+
+        return \redirect()->route('viewProducts', $catUrl . $min_price_range . $max_price_range . $sortUrl);
     }
 
 }

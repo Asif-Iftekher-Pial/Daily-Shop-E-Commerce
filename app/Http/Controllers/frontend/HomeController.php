@@ -62,7 +62,8 @@ class HomeController extends Controller
     public function searchSubmit(Request $request){
         $query = $request->input('query');
         $products = Product::where([['title', 'LIKE', '%' . $query . '%'], ['status', '=', 'active']])->get();
-        
-        return view('frontend.partials.products.products',compact('products'));
+       
+        $category = Category::orderBy('cat_name', 'ASC')->take(8)->get();
+        return view('frontend.partials.products.products',compact('products','category'));
     }
 }

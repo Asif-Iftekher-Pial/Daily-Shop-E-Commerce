@@ -14,11 +14,15 @@
                                         <label for="">Sort by:</label>
                                         <select name="sortBy" onchange="this.form.submit();" class="form-control">
                                             <option>Default</option>
-                                            <option value="Date" @if(!empty($_GET['sortBy']) && $_GET['sortBy'] == 'Date') selected @endif>Latest</option>
+                                            <option value="Date" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == 'Date') selected @endif>Latest
+                                            </option>
 
-                                            <option value="Name" @if(!empty($_GET['sortBy']) && $_GET['sortBy'] == 'Name') selected @endif>Name</option>
-                                            <option value="Price" @if(!empty($_GET['sortBy']) && $_GET['sortBy'] == 'Price') selected @endif>Price-(Lower to higher)</option>
-                                            <option value="PriceDesc" @if(!empty($_GET['sortBy']) && $_GET['sortBy'] == 'PriceDesc') selected @endif>Price-(Higher to Lower)</option>
+                                            <option value="Name" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == 'Name') selected @endif>Name
+                                            </option>
+                                            <option value="Price" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == 'Price') selected @endif>
+                                                Price-(Lower to higher)</option>
+                                            <option value="PriceDesc" @if (!empty($_GET['sortBy']) && $_GET['sortBy'] == 'PriceDesc') selected @endif>
+                                                Price-(Higher to Lower)</option>
                                         </select>
                                     </div>
                                     {{-- <form action="" class="aa-show-form">
@@ -74,26 +78,26 @@
                                 </ul>
                                 <!-- quick view modal -->
                                 <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog"
-                                aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-hidden="true">&times;</button>
-                                            <div class="row">
-                                                <!-- Modal view slider -->
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <div class="aa-product-view-slider">
-                                                        <div class="simpleLens-gallery-container" id="demo">
-                                                            <div class="simpleLens-container">
-                                                                <div class="simpleLens-big-image-container">
-                                                                    <a class="simpleLens-lens-image"
-                                                                        data-lens-image=""><img src=""
-                                                                            class="simpleLens-big-image">
-                                                                    </a>
+                                    aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-hidden="true">&times;</button>
+                                                <div class="row">
+                                                    <!-- Modal view slider -->
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="aa-product-view-slider">
+                                                            <div class="simpleLens-gallery-container" id="demo">
+                                                                <div class="simpleLens-container">
+                                                                    <div class="simpleLens-big-image-container">
+                                                                        <a class="simpleLens-lens-image"
+                                                                            data-lens-image=""><img src=""
+                                                                                class="simpleLens-big-image">
+                                                                        </a>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            {{-- <div class="simpleLens-thumbnails-container">
+                                                                {{-- <div class="simpleLens-thumbnails-container">
                                                                 <a href="#" class="simpleLens-thumbnail-wrapper"
                                                                     data-lens-image="img/view-slider/large/polo-shirt-1.png"
                                                                     data-big-image="img/view-slider/medium/polo-shirt-1.png">
@@ -114,44 +118,46 @@
                                                                         src="img/view-slider/thumbnail/polo-shirt-4.png">
                                                                 </a>
                                                             </div> --}}
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <!-- Modal view content -->
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <div class="aa-product-view-content">
-                                                        <h3 id="title"></h3>
-                                                        <div class="aa-price-block">
-                                                            <span class="aa-product-view-price" id="price"></span>
-                                                            <p class="aa-product-avilability">Avilability:
-                                                                <span>In stock</span>
-                                                            </p>
-                                                        </div>
-                                                        <p id="summary"></p>
-                                                        <h4>Size</h4>
-                                                        <div class="aa-prod-view-size" id="size">
+                                                    <!-- Modal view content -->
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <div class="aa-product-view-content">
+                                                            <h3 id="title"></h3>
+                                                            <div class="aa-price-block">
+                                                                <span class="aa-product-view-price" id="price"></span>
+                                                                <p class="aa-product-avilability">Avilability:
+                                                                    <span>In stock</span>
+                                                                </p>
+                                                            </div>
+                                                            <p id="summary"></p>
+                                                            <h4>Size</h4>
+                                                            <div class="aa-prod-view-size" id="size">
 
-                                                        </div>
-                                                        <div class="aa-prod-quantity">
-                                                            <input type="number" name="qty" id="" value="1" min="1" max="5" style="width:45px">
-                                                            <p class="aa-prod-category">
-                                                                Category: <a href="#" id="catName"></a>
-                                                            </p>
-                                                        </div>
-                                                        <div class="aa-prod-view-bottom">
-                                                            <a href="#" class="aa-add-to-cart-btn"><span
-                                                                    class="fa fa-shopping-cart"></span>Add To
-                                                                Cart</a>
-                                                            <a href="#" class="aa-add-to-cart-btn">View
-                                                                Details</a>
+                                                            </div>
+                                                            <div class="aa-prod-quantity">
+                                                                <input type="number" name="qty" id=""
+                                                                    value="1" min="1" max="5"
+                                                                    style="width:45px">
+                                                                <p class="aa-prod-category">
+                                                                    Category: <a href="#" id="catName"></a>
+                                                                </p>
+                                                            </div>
+                                                            <div class="aa-prod-view-bottom">
+                                                                <a href="#" class="aa-add-to-cart-btn"><span
+                                                                        class="fa fa-shopping-cart"></span>Add To
+                                                                    Cart</a>
+                                                                <a href="#" class="aa-add-to-cart-btn">View
+                                                                    Details</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal-dialog -->
+                                </div>
                                 <!-- / quick view modal -->
                             </div>
                             <div class="aa-product-catg-pagination">
@@ -206,21 +212,15 @@
                                 <h3>Shop By Price</h3>
                                 <!-- price range -->
                                 <div class="aa-sidebar-price-range">
-                                    <form action="">
-                                        <div id="skipstep" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
-                                            {{-- <div class="noUi-base">
-                                            <div class="noUi-origin noUi-connect" style="left: 20%;">
-                                                <div class="noUi-handle noUi-handle-lower"></div>
-                                            </div>
-                                            <div class="noUi-origin noUi-background" style="left: 90%;">
-                                                <div class="noUi-handle noUi-handle-upper"></div>
-                                            </div>
-                                        </div> --}}
-                                        </div>
-                                        <span id="skip-value-lower" class="example-val">20.00</span>
-                                        <span id="skip-value-upper" class="example-val">90.00</span>
-                                        <button class="aa-filter-btn" type="submit">Filter</button>
-                                    </form>
+                                    <div id="skipstep" class="noUi-target noUi-ltr noUi-horizontal noUi-background">
+
+                                    </div>
+                                    <input type="hidden" id="price_range_min" value="" name="price_range_min">
+                                    <input type="hidden" id="price_range_max" value="" name="price_range_max">
+                                    <span id="skip-value-lower" class="example-val"></span>
+                                    <span id="skip-value-upper" class="example-val"></span>
+                                    <button class="aa-filter-btn" id="filterButton" type="button">Filter</button>
+
                                 </div>
 
                             </div>
@@ -315,3 +315,61 @@
         </div>
     </section>
 @endsection
+@push('front_script')
+    <script>
+        $(document).ready(function() {
+
+            /* ----------------------------------------------------------- */
+            /*  9. PRICE SLIDER  (noUiSlider SLIDER)
+            /* ----------------------------------------------------------- */
+
+            jQuery(function() {
+                if ($('body').is('.productPage')) {
+
+                    var skipSlider = document.getElementById('skipstep');
+                    var minPrice = {!! json_encode(minPrice()) !!}
+                    var maxPrice = {!! json_encode(maxPrice()) !!}
+                    noUiSlider.create(skipSlider, {
+                        range: {
+                            'min': minPrice,
+                            'max': maxPrice
+                        },
+                        // snap: true,
+                        connect: true,
+                        start: [minPrice, maxPrice]
+                    });
+                    // for value print
+
+                    var skipValues = [
+                        document.getElementById('skip-value-lower'),
+                        document.getElementById('skip-value-upper')
+                    ];
+
+
+                    skipSlider.noUiSlider.on('update', function(values, handle) {
+                        skipValues[handle].innerHTML = values[handle];
+                    });
+                }
+            });
+
+
+            $(document).ready(function () {
+                $(document).on('click', '#filterButton', function(e) {
+                    e.preventDefault();
+                    var min = parseInt($('#skip-value-lower').html());
+                    var max = parseInt($('#skip-value-upper').html());
+
+                   $('#price_range_min').val(min);
+                  $('#price_range_max').val(max);
+                   
+                    // alert(min + ' -- ' + max);
+                    this.form.submit();
+                });
+                
+                
+            });
+
+            /* ----------------------------------------------------------- */
+        });
+    </script>
+@endpush
